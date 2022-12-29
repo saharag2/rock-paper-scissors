@@ -1,3 +1,14 @@
+//DOM selectors
+const allButtons = document.querySelector(".buttons");
+const rockButton = document.querySelector(".rock");
+const paperButton = document.querySelector(".paper");
+const scissorsButton = document.querySelector(".scissors");
+
+
+//Event Listener
+rockButton.addEventListener("click",playRound);
+paperButton.addEventListener("click",playRound);
+scissorsButton.addEventListener("click",playRound);
 //Global values
 let humanScore = 0;
 let computerScore = 0;
@@ -63,3 +74,4 @@ function win() {
   } else 
     return "ERROR!"
 };
+
