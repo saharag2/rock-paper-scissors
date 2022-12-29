@@ -1,12 +1,12 @@
-// Global values
+//Global values
 let humanScore = 0;
 let computerScore = 0;
-let winner = 0;
 const computerSelection = getComputerChoice();
-playerSelection = playerSelection.toLowerCase();
-// computerChoice Generator
+
+
+// Computer Generated Response
 function getComputerChoice () {
-  const randomNumber = Math.floor(Math.random() * 3);
+   const randomNumber = Math.floor(Math.random() * 3);
     if (randomNumber==0) {
       return "rock";
     } else if (randomNumber==1) {
@@ -17,42 +17,43 @@ function getComputerChoice () {
       return "Error";
     } 
 };
-// one playround
+
+// One game playRound result
 function playRound (playerSelection, computerSelection) {
-  
-   if (playerSelection=='rock' && computerSelection=='paper') {
-        return ('You Win! Rock beats Paper' , humanScore += 1);
-    } else if (playerSelection=='paper' && computerSelection=='rock'){
-        return ('You Lose! Rock beat Paper' , computerScore +=1);
-    } else if (playerSelection=='rock' && computerSelection=='rock') {
-        return "It's a Tie";
-    } else if (playerSelection=='paper'&& computerSelection=='paper'){
-        return "It's a Tie";
-    } else if (playerSelection=='rock'&& computerSelection=='scissors'){
-        return ("You Win! Rock beats Scissors", humanScore+=1);
-    } else if (playerSelection=='scissors'&& computerSelection=='rock') {
-        return ("You Lose! Rock beats Scissors", computerScore+=1);
-    } else if (playerSelection=='scissors'&& computerSelection=='scissors') {
-        return "It's a Tie";
-    } else if (playerSelection=='paper'&& computerSelection=='scissors') {
-        return ("You Lose! Scissors beats Paper", computerScore+=1);
-    } else if (playerSelection=='scissors'&& computerSelection=='paper') {
-        return ("You Win! Scissors beats Paper", humanScore+=1);
-    } else {
-      return "ERROR";
-    }
-};
-
-
-function game() {
-
-  while (humanScore <= 5 && computerScore <=5) {
-    let playerSelection = prompt ('Pick your fighter');
-    alert (playRound(playerSelection, computerSelection));
+  playerSelection = playerSelection.toLowerCase();
+  if (playerSelection == computerSelection) {
+    return "It's a Tie!";
+  } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+    humanScore++
+    return "You Win! Rock beats Scissors!";
+  } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+    computerScore++
+    return "You Lose! Rock beats Scissors!";
+  } else if (playerSelection == 'rock' && computerSelection == 'paper') {
+    computerScore++
+    return "You Lose! Paper beats Rock!";
+  } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+    humanScore++
+    return "You Win! Paper beats Rock!";
+  } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+    computerScore++
+    return "You Lose! Scissors beats Paper!";
+  } else if (playerSelection == 'scissors'&& computerSelection=='paper') {
+    humanScore++
+    return "You Win! Scissors beats Paper!";
   }
-  alert(win());
-  
+    
 };
+
+// loop for game to play 5 times
+function game () {
+ for (let i=0; i<5; i++);
+ playRound();
+playerSelection = prompt("pick your poison");
+ 
+};
+
+
 // Keep score and determine winner
 function win() {
   if (humanScore == 5) {
